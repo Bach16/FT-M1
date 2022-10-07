@@ -16,7 +16,15 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    let suma = 0
+    for (let i = 0; i < array.length; i++) {
+        if(Array.isArray(array[i])) {
+            suma += countArray(array[i])
+        } else {
+            suma += array[i]
+        }
+    }
+    return suma
 }
 
 
@@ -39,7 +47,16 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
-
+    let sum = 0
+    for (const prop in obj) {
+        sum ++
+        if (typeof obj[prop] === "object") {
+            if (!Array.isArray(obj[prop]))
+            sum += countProps(obj[prop])
+        }
+    }   
+    
+    return sum
 }
 
 
@@ -53,7 +70,17 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
-
+    /*let count = 0
+    let current = this.head
+    while (current)
+    if (isNaN(current.value)) {
+        current.value = 'Kiricocho'
+        count++
+    }else {
+        current = current.next
+    }
+    return count
+    */
 }
 
 
@@ -88,8 +115,22 @@ var closureMult = function(multiplier) {
 // Implementar el método sum dentro del prototype de BinarySearchTree
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
-    // Tu código aca:
-
+    // Tu código aca:   
+    let suma = 0
+        if (this.right === null && this.left === null){
+            suma += this.value
+          }
+          if (this.right !== null && this.left === null){
+            suma += this.value + this.right.sum()
+          }  
+          if (this.left !== null && this.right === null){
+            suma += this.value + this.left.sum()
+          } 
+          if (this.right !== null && this.left !== null){
+            suma += this.value + this.right.sum() + this.left.sum()
+          } 
+    
+    return suma
 }
 
 module.exports = {

@@ -6,6 +6,16 @@ function quickSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
+ let pivot = array[Math.floor(Math.random()*datos.length)]
+ for (let i = 0; i < array.length; i++) {  
+  if(pivot > array[i]){
+    let a = []
+    array.push[i]
+  }else{
+    let b = []
+    b.push[i]
+  }
+ }
 
 }
 
